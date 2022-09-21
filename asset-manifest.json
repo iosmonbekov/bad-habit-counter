@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/iosmonbekov/bad-habit-counter/static/css/main.b1222e70.css",
+    "main.js": "/iosmonbekov/bad-habit-counter/static/js/main.a160599c.js",
+    "index.html": "/iosmonbekov/bad-habit-counter/index.html",
+    "main.b1222e70.css.map": "/iosmonbekov/bad-habit-counter/static/css/main.b1222e70.css.map",
+    "main.a160599c.js.map": "/iosmonbekov/bad-habit-counter/static/js/main.a160599c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b1222e70.css",
+    "static/js/main.a160599c.js"
+  ]
+}
