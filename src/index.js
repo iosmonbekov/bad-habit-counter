@@ -10,7 +10,7 @@ import WelcomePage from './views/WelcomePage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <BrowserRouter basename='/'>
+  <BrowserRouter basename='/bad-habit-counter'>
     <div className='container mx-auto px-4 h-full'>
       <Routes>
         <Route path='/' element={<WelcomePage />} />
