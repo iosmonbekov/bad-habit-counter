@@ -1,6 +1,6 @@
 {
   "name": "bad-habit-counter-app",
-  "homepage": ".",
+  "homepage": "./bad-habit-counter",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
