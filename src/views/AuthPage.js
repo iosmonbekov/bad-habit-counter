@@ -1,4 +1,4 @@
-function SignInPage() {
+function AuthPage() {
     return (
         <section className="h-screen">
             <div className="container px-6 py-12 h-full">
@@ -35,15 +35,13 @@ function SignInPage() {
                                         className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                                         id="exampleCheck3"
                                     />
-                                    <label className="form-check-label inline-block text-gray-800" htmlFor="exampleCheck2"
-                                    >Remember me</label
-                                    >
+                                    <label className="form-check-label inline-block text-gray-800" htmlFor="exampleCheck2">Remember me</label>
                                 </div>
                                 <a
                                     href="#!"
                                     className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
-                                >Forgot password?</a
-                                >
+                                >Don't have account?
+                                </a>
                             </div>
 
                             <button
@@ -64,4 +62,4 @@ function SignInPage() {
 }
 
 
-export default SignInPage;
+export default AuthPage;
