@@ -1,4 +1,33 @@
+import { useMemo, useState } from "react";
+import AuthService from "../../services/AuthService";
+import AuthForm from "../../consts/models/AuthForm";
+import { useLocation } from "react-router-dom";
+
 function AuthPage() {
+    const [form, setForm] = useState(new AuthForm());
+    const location = useLocation();
+
+    const isSignIn = useMemo(() => {
+        return location.pathname === '/sign-in'
+    }, [location.pathname])
+
+    const setFormField = (name, value) => {
+        setForm((state) => ({ ...state, [name]: value }));
+    }
+
+    const onSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            if (isSignIn) await AuthService.signIn(form);
+            else await AuthService.signUp(form);
+        } catch (error) {
+            // TODO: Handle Errors
+            console.log(error);
+            window.alert('Error');
+        }
+    };
+
     return (
         <section className="h-screen">
             <div className="container px-6 py-12 h-full">
@@ -11,12 +40,14 @@ function AuthPage() {
                         />
                     </div>
                     <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
-                        <form>
+                        <form onSubmit={onSubmit}>
                             <div className="mb-6">
                                 <input
                                     type="text"
                                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                     placeholder="Email address"
+                                    value={form.email}
+                                    onInput={(event) => setFormField('email', event.target.value)}
                                 />
                             </div>
 
@@ -25,6 +56,8 @@ function AuthPage() {
                                     type="password"
                                     className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                     placeholder="Password"
+                                    value={form.password}
+                                    onInput={(event) => setFormField('password', event.target.value)}
                                 />
                             </div>
 
@@ -33,14 +66,14 @@ function AuthPage() {
                                     <input
                                         type="checkbox"
                                         className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                                        id="exampleCheck3"
                                     />
                                     <label className="form-check-label inline-block text-gray-800" htmlFor="exampleCheck2">Remember me</label>
                                 </div>
                                 <a
                                     href="#!"
                                     className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
-                                >Don't have account?
+                                >
+                                    {isSignIn ? 'Don\'t have account?' : 'Already have account?'}
                                 </a>
                             </div>
 
@@ -50,7 +83,7 @@ function AuthPage() {
                                 data-mdb-ripple="true"
                                 data-mdb-ripple-color="light"
                             >
-                                Sign in
+                                {isSignIn ? 'Sign in' : 'Sign up'}
                             </button>
 
                         </form>
@@ -60,6 +93,5 @@ function AuthPage() {
         </section>
     )
 }
-
 
 export default AuthPage;

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './index.css';
 
-import NotFountPage from './views/NotFoundPage';
-import AuthPage from './views/AuthPage';
+import NotFountPage from './views/StatusPages/NotFoundPage';
+import AuthPage from './views/AuthPage/AuthPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
